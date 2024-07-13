@@ -20,6 +20,22 @@ def calculate_score(cards):
         
     return sum(cards)
 
+def compare(user_score, computer_score):
+    if user_score == computer_score:
+        return "Draw"
+    elif computer_score == 0:
+        return "Lose, opponent has Blackjack."
+    elif user_score == 0:
+        return "Win with a Blackjack"
+    elif user_score > 21:
+        return "Bust. You went over. You lose."
+    elif computer_score > 21:
+        return "You win! Dealer busts!"
+    elif user_score > computer_score:
+        return "You win"
+    else:
+        return "You lose"
+
 def play_game():
     user_cards = []
     computer_cards = []
@@ -53,6 +69,7 @@ def play_game():
     
     print(f" Your final hand is: {user_cards}, final score: {user_score}")
     print(f" Dealer's final hand is: {computer_cards}, final score: {computer_score}")
+    print(compare(user_score, computer_score))
     
 # While loop to contine/begin game.
 while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
